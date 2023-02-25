@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import TextChoices
+from django.utils import timezone
 
 
 # Create your models here.
@@ -26,3 +27,8 @@ class Article(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.status}"
+
+    def delete(self, using=None, keep_parents=False):
+        self.is_deleted = True
+        self.deleted_at = timezone.now()
+        self.save()
