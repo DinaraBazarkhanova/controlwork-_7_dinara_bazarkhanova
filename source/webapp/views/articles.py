@@ -30,3 +30,13 @@ def update_view(request, pk):
         return redirect('index_view')
     return redirect(request, 'article_update.html', context={'article': article, 'choices': StatusChoice.choices})
 
+
+def delete_view(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    return render(request, 'article_confirm_delete.html', context={'article': article})
+
+
+def confirm_delete(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    article.delete()
+    return redirect('index_view')
