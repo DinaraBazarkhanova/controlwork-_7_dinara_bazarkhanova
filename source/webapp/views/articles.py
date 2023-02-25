@@ -14,6 +14,11 @@ def add_view(request: WSGIRequest):
         'email': request.POST.get('email'),
         'text': request.POST.get('text')
     }
+    if article_data['name'] == '' or article_data['email'] == '' or article_data['text'] == '':
+        return render(request, 'article_create.html', context={
+            'choices': StatusChoice.choices,
+            'message': 'Поле не может быть пустым!'
+        })
     Article.objects.create(**article_data)
     return redirect('index')
 
@@ -24,8 +29,14 @@ def update_view(request, pk):
         article.name = request.POST.get('name')
         article.email = request.POST.get('email')
         article.text = request.POST.get('text')
+        if article.name == '' or article.email == '' or article.text == '':
+            return render(request, 'article_create.html', context={
+                'choices': StatusChoice.choices,
+                'message': 'Поле не может быть пустым!'
+            })
+        article.save()
         return redirect('index')
-    return redirect(request, 'article_update.html', context={'article': article, 'choices': StatusChoice.choices})
+    return render(request, 'article_update.html', context={'article': article, 'choices': StatusChoice.choices})
 
 
 def delete_view(request, pk):

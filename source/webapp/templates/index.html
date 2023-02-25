@@ -10,6 +10,12 @@
         <div class="block">
             <h2>{{ article.name }} ({{ article.email }})</h2>
             <p>{{ article.text }}</p>
+            <a href="{% url 'article_update' article.pk %}">
+                Update <i class="fa-regular fa-pen-to-square"></i>
+            </a>
+            <a href="{% url 'article_delete' article.pk %}">
+                Delete <i class="fa-regular fa-trash"></i>
+            </a>
         </div>
     {% endfor %}
 {% endblock %}

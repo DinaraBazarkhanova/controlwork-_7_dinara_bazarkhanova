@@ -1,24 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}New record{% endblock %}
 {% block content %}
+    <h1>Добавить новую запись</h1>
     <div class="form">
         <form action="{% url 'article_add' %}" method="post">
-            {% csrf_token %}
-            <div class="form_row">
-                <label for="name">Имя</label>
-                <input type="text" id="name" name="name">
-            </div>
-            <div class="form_row">
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email">
-            </div>
-            <div class="form_row">
-                <label for="text">Текст</label>
-                <textarea name="text", id="text", cols="30", rows="10"></textarea>
-            </div>
-            <div class="submit_button">
-                <input type="submit" value="Добавить">
-            </div>
+            {% include 'partial/article_form.html' with button_text='Добавить' %}
         </form>
     </div>
 {% endblock %}

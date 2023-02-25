@@ -1,9 +1,5 @@
 {% extends 'base.html' %}
 {% block title %}Article confirm delete{% endblock %}
-{% block menu %}
-    <a href="{% url 'article_add' %}">Добавить новую запись</a>
-    <a href="{% url 'article_update' %}">Изменить запись</a>
-{% endblock %}
 {% block content %}
     <div class="container">
         <h1>Вы точно хотите удалить запись?</h1>
@@ -13,8 +9,8 @@
     <p>Статус: {{ article.status }}</p>
         <form action="{% url 'confirm_delete' article.pk %}" method="post">
             {% csrf_token %}
-            <p><input type="submit">Удалить</p>
-            <p><a href="{% url 'index' %}">Отмена</a></p>
+            <input type="submit" value="Удалить">
+            <a href="{% url 'index' %}">Отмена</a>
         </form>
     </div>
 {% endblock %}
