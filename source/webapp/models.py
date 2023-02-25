@@ -4,8 +4,8 @@ from django.db.models import TextChoices
 
 # Create your models here.
 class StatusChoice(TextChoices):
-    ACTIVE = "active", "Active"
-    BLOCKED = "blocked", "Blocked"
+    ACTIVE = "active", "Активно"
+    BLOCKED = "blocked", "Заблокировано"
 
 
 class Article(models.Model):
