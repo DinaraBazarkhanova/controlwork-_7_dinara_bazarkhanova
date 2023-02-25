@@ -12,12 +12,10 @@ def add_view(request: WSGIRequest):
     article_data = {
         'name': request.POST.get('name'),
         'email': request.POST.get('email'),
-        'text': request.POST.get('text'),
-        'status': request.POST.get('status')
+        'text': request.POST.get('text')
     }
-    article = Article.objects.create(**article_data)
-    return redirect('index_view', pk=article.pk)
-# pk=article.pk???
+    Article.objects.create(**article_data)
+    return redirect('index')
 
 
 def update_view(request, pk):
@@ -26,8 +24,7 @@ def update_view(request, pk):
         article.name = request.POST.get('name')
         article.email = request.POST.get('email')
         article.text = request.POST.get('text')
-        article.status = request.POST.get('status')
-        return redirect('index_view')
+        return redirect('index')
     return redirect(request, 'article_update.html', context={'article': article, 'choices': StatusChoice.choices})
 
 
@@ -39,4 +36,4 @@ def delete_view(request, pk):
 def confirm_delete(request, pk):
     article = get_object_or_404(Article, pk=pk)
     article.delete()
-    return redirect('index_view')
+    return redirect('index')
