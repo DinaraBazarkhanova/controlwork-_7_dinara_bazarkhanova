@@ -1,18 +1,29 @@
 body{
-    font-family: Arial, sans-serif;
+    font-family: SansSerif, sans-serif;
     background: #c8a78c;
     color: black;
     margin-top: 65px;
 }
 
+h2{
+    font-size: 18px;
+}
+
+.icons{
+     font-size: 12px;
+}
+
 .block{
     border: 2px black;
     border-radius: 1px;
+    width: 500px;
 }
 
 .container{
     margin: 0 auto;
     width: 1175px;
+    border: 2px black;
+    border-radius: 1px;
 }
 
 .navbar {

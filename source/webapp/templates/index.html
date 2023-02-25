@@ -8,14 +8,16 @@
     <h1>Гостевая Книга</h1>
     {% for article in articles %}
         <div class="block">
-            <h2>{{ article.name }} ({{ article.email }})</h2>
+            <h2>
+                {{ article.name }} ({{ article.email }})
+                <a class="icons" href="{% url 'article_update' article.pk %}">
+                    Update <i class="fa-regular fa-pen-to-square"></i>
+                </a>
+                <a class="icons" href="{% url 'article_delete' article.pk %}">
+                    Delete <i class="fa-regular fa-trash"></i>
+                </a>
+            </h2>
             <p>{{ article.text }}</p>
-            <a href="{% url 'article_update' article.pk %}">
-                Update <i class="fa-regular fa-pen-to-square"></i>
-            </a>
-            <a href="{% url 'article_delete' article.pk %}">
-                Delete <i class="fa-regular fa-trash"></i>
-            </a>
         </div>
     {% endfor %}
 {% endblock %}
